@@ -8,6 +8,7 @@ const Masonry = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [errorMsg, setErrorMsg] = useState('')
     const [offset, setOffset] = useState(0)
+    const width = useWindowSize();
 
     useEffect(() => {
         const loadAllPokemon = async () => {
@@ -34,7 +35,6 @@ const Masonry = () => {
 
     }, [])
 
-    const width = useWindowSize();
     useEffect(() => {
         const maxColumns = parseInt(width / 250)
         const colHeights = Array.from({length: maxColumns}).fill(0);
@@ -52,6 +52,7 @@ const Masonry = () => {
 
         let center = document.getElementById('center-container')
         center.style.width = 240 * maxColumns + 'px'
+        center.style.height = colHeights[0] + 'px'
 
     }, [data, width])
 
