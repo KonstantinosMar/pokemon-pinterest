@@ -35,7 +35,9 @@ const Item = ({pokemonUrl, height}) => {
 
         <div className="pokemon-item" style={{height: height }}>
             <img width="100%" height="100%" src={pokemon.image} alt=""/>
-            <h2>{pokemon.name}</h2>
+            <div className="overlay" style={{height: height }}>
+                <h2>{pokemon.name}</h2>
+            </div>
         </div>
     );
 };
