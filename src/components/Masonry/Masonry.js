@@ -24,7 +24,7 @@ const Masonry = () => {
                     })
             } catch
                 (error) {
-                setErrorMsg('Error fetching articles');
+                setErrorMsg('Error fetching pokemon data');
             } finally {
                 setIsLoading(false);
             }
