@@ -35,11 +35,7 @@ const Masonry = () => {
 
     useEffect(() => {
         const maxColumns = parseInt(window.innerWidth / 300)
-        console.log(maxColumns)
-        let colHeights = []
-        for(let i = 0; i < maxColumns; i++) {
-            colHeights.push(0)
-        }
+        const colHeights = Array.from({ length: maxColumns }).fill(0);
         const masonryItems = document.querySelectorAll('.pokemon-item');
 
         for(let i = 0; i < masonryItems.length; i++) {
