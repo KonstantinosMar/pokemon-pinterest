@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import {BsThreeDots} from 'react-icons/bs'
 import {RxShare2} from 'react-icons/rx'
 import "./Item.scss"
 import Button from "../partials/Button/Button";
+import {FiArrowUpRight} from "react-icons/fi";
 
 const Item = ({pokemonUrl, height}) => {
 
@@ -39,7 +40,7 @@ const Item = ({pokemonUrl, height}) => {
             <div className="overlay" style={{height: height}}>
                 <h2>{pokemon.name}</h2>
                 <div className="button">
-                    <Button target='/' content={pokemon.name} classes="bgBlack"/>
+                    <Button target='/' content={<Fragment><FiArrowUpRight/>{pokemon.name}</Fragment>} classes="bgBlack"/>
                     <RxShare2/>
                     <BsThreeDots/>
                 </div>

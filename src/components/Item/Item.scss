@@ -46,10 +46,19 @@
       width: 100%;
       justify-content: space-between;
       a {
-        flex: 1;
-        flex-grow: 2;
         margin-right: 5px;
         text-transform: capitalize;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 70px;
+        font-size: 12px;
+        svg {
+          background-color: unset;
+          padding: 0;
+          border-radius: unset;
+          margin-right: 2px;
+        }
       }
       svg {
         background-color: rgba(255, 255, 255, 0.8);
