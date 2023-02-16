@@ -3,8 +3,6 @@ import "./Masonry.scss"
 import Item from "../Item/Item";
 import useWindowSize from "../../utils/useWindowSize";
 
-
-
 const Masonry = () => {
     const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
@@ -52,20 +50,25 @@ const Masonry = () => {
             colHeights[i % maxColumns] += height + 16;
         }
 
-    }, [data,width])
+        let center = document.getElementById('center-container')
+        center.style.width = 240 * maxColumns + 'px'
+
+    }, [data, width])
 
     return (
-        <div className="masonry">
-            {isLoading && <p>Loading</p>}
-            {
-                data.map((pokemon) => {
-                    return (
-                        <Item key={pokemon.name} pokemonUrl={pokemon.url}
-                              height={`${Math.floor(Math.random() * (500 - 300 + 1) + 200)}px`}/>
-                    )
-                })
-            }
-            {errorMsg && <p>{errorMsg}</p>}
+        <div id="center-container">
+            <div className="masonry">
+                {isLoading && <p>Loading</p>}
+                {
+                    data.map((pokemon) => {
+                        return (
+                            <Item key={pokemon.name} pokemonUrl={pokemon.url}
+                                  height={`${Math.floor(Math.random() * (500 - 300 + 1) + 200)}px`}/>
+                        )
+                    })
+                }
+                {errorMsg && <p>{errorMsg}</p>}
+            </div>
         </div>
     );
 };
