@@ -35,10 +35,10 @@ const Masonry = () => {
 
     useEffect(() => {
         const maxColumns = parseInt(window.innerWidth / 250)
-        const colHeights = Array.from({ length: maxColumns }).fill(0);
+        const colHeights = Array.from({length: maxColumns}).fill(0);
         const masonryItems = document.querySelectorAll('.pokemon-item');
 
-        for(let i = 0; i < masonryItems.length; i++) {
+        for (let i = 0; i < masonryItems.length; i++) {
             const height = masonryItems[i].getBoundingClientRect().height;
             const left = i % maxColumns * 232 + (16 * (i % maxColumns)) + 'px';
             const top = colHeights[i % maxColumns] + 'px';
@@ -48,7 +48,7 @@ const Masonry = () => {
             colHeights[i % maxColumns] += height + 16;
         }
 
-    },[data])
+    }, [data])
 
     return (
         <div className="masonry">
@@ -56,7 +56,8 @@ const Masonry = () => {
             {
                 data.map((pokemon) => {
                     return (
-                        <Item key={pokemon.name} pokemonUrl={pokemon.url} height={`${Math.floor(Math.random() * (500 - 300 + 1) + 200)}px`}/>
+                        <Item key={pokemon.name} pokemonUrl={pokemon.url}
+                              height={`${Math.floor(Math.random() * (500 - 300 + 1) + 200)}px`}/>
                     )
                 })
             }

@@ -1,5 +1,8 @@
 import React, {useEffect, useState} from 'react';
+import {BsThreeDots} from 'react-icons/bs'
+import {RxShare2} from 'react-icons/rx'
 import "./Item.scss"
+import Button from "../partials/Button/Button";
 
 const Item = ({pokemonUrl, height}) => {
 
@@ -29,14 +32,17 @@ const Item = ({pokemonUrl, height}) => {
     }, [])
 
 
-
-
     return (
 
-        <div className="pokemon-item" style={{height: height }}>
+        <div className="pokemon-item" style={{height: height}}>
             <img width="100%" height="100%" src={pokemon.image} alt=""/>
-            <div className="overlay" style={{height: height }}>
+            <div className="overlay" style={{height: height}}>
                 <h2>{pokemon.name}</h2>
+                <div className="button">
+                    <Button target='/' content={pokemon.name} classes="bgBlack"/>
+                    <RxShare2/>
+                    <BsThreeDots/>
+                </div>
             </div>
         </div>
     );
