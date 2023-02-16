@@ -1,11 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useState} from 'react';
 import "./Masonry.scss"
 import Item from "../Item/Item";
+import useWindowSize from "../../utils/useWindowSize";
+
+
 
 const Masonry = () => {
     const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-    const [errorMsg, setErrorMsg] = useState(false)
+    const [errorMsg, setErrorMsg] = useState('')
     const [offset, setOffset] = useState(0)
 
     useEffect(() => {
@@ -33,14 +36,15 @@ const Masonry = () => {
 
     }, [])
 
+    const width = useWindowSize();
     useEffect(() => {
-        const maxColumns = parseInt(window.innerWidth / 250)
+        const maxColumns = parseInt(width / 250)
         const colHeights = Array.from({length: maxColumns}).fill(0);
         const masonryItems = document.querySelectorAll('.pokemon-item');
 
         for (let i = 0; i < masonryItems.length; i++) {
             const height = masonryItems[i].getBoundingClientRect().height;
-            const left = i % maxColumns * 232 + (16 * (i % maxColumns)) + 'px';
+            const left = i % maxColumns * 220 + (16 * (i % maxColumns)) + 'px';
             const top = colHeights[i % maxColumns] + 'px';
 
             masonryItems[i].style.transform = `translateX(${left}) translateY(${top})`;
@@ -48,7 +52,7 @@ const Masonry = () => {
             colHeights[i % maxColumns] += height + 16;
         }
 
-    }, [data])
+    }, [data,width])
 
     return (
         <div className="masonry">
@@ -65,5 +69,4 @@ const Masonry = () => {
         </div>
     );
 };
-
 export default Masonry;
