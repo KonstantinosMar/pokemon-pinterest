@@ -34,17 +34,22 @@ const Masonry = () => {
     }, [])
 
     useEffect(() => {
-        const colHeights = [0, 0, 0];
+        const maxColumns = parseInt(window.innerWidth / 300)
+        console.log(maxColumns)
+        let colHeights = []
+        for(let i = 0; i < maxColumns; i++) {
+            colHeights.push(0)
+        }
         const masonryItems = document.querySelectorAll('.pokemon-item');
 
         for(let i = 0; i < masonryItems.length; i++) {
             const height = masonryItems[i].getBoundingClientRect().height;
-            const left = i % 3 * 282 + (16 * (i % 3)) + 'px';
-            const top = colHeights[i % 3] + 'px';
+            const left = i % maxColumns * 282 + (16 * (i % maxColumns)) + 'px';
+            const top = colHeights[i % maxColumns] + 'px';
 
             masonryItems[i].style.transform = `translateX(${left}) translateY(${top})`;
 
-            colHeights[i % 3] += height + 16;
+            colHeights[i % maxColumns] += height + 16;
         }
 
     },[data])
