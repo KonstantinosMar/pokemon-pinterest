@@ -9,6 +9,7 @@
   position: absolute;
   z-index: 1;
   &:hover {
+    cursor: zoom-in;
     > .overlay {
       opacity: 1;
       z-index: 3;
