@@ -10,6 +10,7 @@ import Search from "../partials/Search/Search";
 import Pikachu from "../../assets/images/pikachu.png"
 
 const Header = () => {
+
     return (
         <header>
             <Button target='/' content={<Logo/>} classes="round hoverGray"/>

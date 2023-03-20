@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./Masonry.scss"
 import Item from "../Item/Item";
 import useWindowSize from "../../utils/useWindowSize";
@@ -21,8 +21,12 @@ const Masonry = () => {
                         }
                         throw response
                     })
-                    .then((results) => {
-                        setData(results.results)
+                    .then((items) => {
+                        console.log(items.results)
+                        setData((prevData) => {
+                            const newData = items.results.filter((item) => !prevData.some((prevItem) => prevItem.url === item.url));
+                            return [...prevData, ...newData];
+                        });
                     })
             } catch
                 (error) {
@@ -33,7 +37,7 @@ const Masonry = () => {
         };
         loadAllPokemon()
 
-    }, [])
+    }, [offset])
 
     useEffect(() => {
         const maxColumns = parseInt(width / 250)
@@ -56,6 +60,23 @@ const Masonry = () => {
 
     }, [data, width])
 
+    const handleScroll = () => {
+        const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight
+        if (bottom) {
+            setOffset(offset + 25)
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, {
+            passive: true
+        });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [data]);
+
     return (
         <div id="center-container">
             <div className="masonry">
@@ -63,7 +84,7 @@ const Masonry = () => {
                 {
                     data.map((pokemon) => {
                         return (
-                            <Item key={pokemon.name} pokemonUrl={pokemon.url}
+                            <Item key={`${pokemon.name}-${pokemon.url}`} pokemonUrl={pokemon.url}
                                   height={`${Math.floor(Math.random() * (500 - 300 + 1) + 200)}px`}/>
                         )
                     })
