@@ -1,8 +1,8 @@
-import Header from "./components/Header/Header";
 import "./App.scss"
+import Header from "./components/Header/Header";
 import Masonry from "./components/Masonry/Masonry";
 
-function App() {
+function Page() {
     return (
         <div className="App">
             <Header/>
@@ -11,4 +11,4 @@ function App() {
     );
 }
 
-export default App;
+export default Page;

@@ -4,6 +4,7 @@ import {RxShare2} from 'react-icons/rx'
 import "./Item.scss"
 import Button from "../partials/Button/Button";
 import {FiArrowUpRight} from "react-icons/fi";
+import Image from "next/image"
 
 const Item = ({pokemonUrl, height}) => {
 
@@ -22,7 +23,7 @@ const Item = ({pokemonUrl, height}) => {
                         throw response
                     })
                     .then((results) => {
-                        setPokemon({'name': results.name, 'image': results.sprites.other.dream_world.front_default})
+                        setPokemon({'name': results.name, 'image': results.sprites.other['official-artwork'].front_default})
                     })
             } catch
                 (error) {
@@ -36,7 +37,7 @@ const Item = ({pokemonUrl, height}) => {
     return (
 
         <div className="pokemon-item" style={{height: height}}>
-            <img width="100%" height="100%" src={pokemon.image} alt=""/>
+            <Image fill={true} src={pokemon.image} alt=""/>
             <div className="overlay" style={{height: height}}>
                 <h2>{pokemon.name}</h2>
                 <div className="button">

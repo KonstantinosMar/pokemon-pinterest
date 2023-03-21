@@ -1,3 +1,4 @@
+'use client'
 import React, {useEffect, useState} from 'react';
 import "./Masonry.scss"
 import Item from "../Item/Item";
@@ -22,7 +23,6 @@ const Masonry = () => {
                         throw response
                     })
                     .then((items) => {
-                        console.log(items.results)
                         setData((prevData) => {
                             const newData = items.results.filter((item) => !prevData.some((prevItem) => prevItem.url === item.url));
                             return [...prevData, ...newData];
