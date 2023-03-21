@@ -5,7 +5,6 @@ import Masonry from "./components/Masonry/Masonry";
 function Page() {
     return (
         <div className="App">
-            <Header/>
             <Masonry/>
         </div>
     );

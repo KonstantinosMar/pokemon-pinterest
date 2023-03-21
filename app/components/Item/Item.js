@@ -5,6 +5,7 @@ import "./Item.scss"
 import Button from "../partials/Button/Button";
 import {FiArrowUpRight} from "react-icons/fi";
 import Image from "next/image"
+import Link from "next/link";
 
 const Item = ({pokemonUrl, height}) => {
 
@@ -36,8 +37,8 @@ const Item = ({pokemonUrl, height}) => {
 
     return (
 
-        <div className="pokemon-item" style={{height: height}}>
-            <Image fill={true} src={pokemon.image} alt=""/>
+        <Link href={`/pokemon/${pokemon.name}`} className="pokemon-item" style={{height: height}}>
+            <Image fill={true} src={pokemon.image} alt={pokemon.name} sizes={'100%'}/>
             <div className="overlay" style={{height: height}}>
                 <h2>{pokemon.name}</h2>
                 <div className="button">
@@ -46,7 +47,7 @@ const Item = ({pokemonUrl, height}) => {
                     <BsThreeDots/>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

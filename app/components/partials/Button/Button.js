@@ -1,11 +1,12 @@
 import React from 'react';
 import "./Button.scss"
+import Link from "next/link";
 
 const Button = ({target, content, classes}) => {
     return (
-        <a href={target} className={classes}>
+        <Link href={target} className={classes}>
             {content}
-        </a>
+        </Link>
     );
 };
 
