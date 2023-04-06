@@ -13,7 +13,7 @@ const Header = () => {
 
     return (
         <header>
-            <Button target='/' content={<BsPinterest size={30} color="#C41F27" />} classes="round hoverGray"/>
+            <Button target='/' content={<Image alt="Logo" src="/pokemon_logo.png" width={30} height={30} />} classes="round hoverGray"/>
             <Button target='/' content="Home" classes="bgBlack"/>
             <Button target='/' content={<Fragment>Create <BiChevronDown/></Fragment>} classes="bgWhite"/>
             <Search/>

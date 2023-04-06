@@ -1,5 +1,4 @@
 import "./App.scss"
-import Header from "./components/Header/Header";
 import Masonry from "./components/Masonry/Masonry";
 
 function Page() {
